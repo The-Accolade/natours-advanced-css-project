@@ -1,0 +1,64 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin centerElement-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin centerElement-2 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//MEDIA QUERIES
+
+/*
+  0 - 600px : Phone 
+  600 - 900px: Tablet portrait
+  900 - 1200px: Tablet Landscape
+  1200 - 1800px: Desktop
+  1800 + : Big Desktop
+  $breakpoints: 
+  -phone 
+  -tab-portrait 
+  -tab-landscape 
+  -desktop
+
+  ORDER: Base + Typography > general layout + grid > page layout >  components
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media (max-width: 37.5em) {  //600px
+      @content
+    }
+  }
+
+  @if $breakpoint==tab-portrait {
+    @media(max-width: 56.25em) {   //900px
+      @content
+    }
+  }
+
+  @if $breakpoint==tab-landscape {
+    @media(max-width: 75em) {   //900px
+      @content
+    }
+  }
+
+  @if $breakpoint==big-desktop {
+    @media(min-width: 112.5em) {   //1800px
+      @content
+    }
+  }
+}
